@@ -2,7 +2,7 @@
 @section('meta')
 <meta property="og:url"                content="{{url()->current()}}" />
 <meta property="og:type"               content="website" />
-<meta property="og:title"              content= "{{ $product->name }}" />
+<meta property="og:title"              content= " Dama: {{ $product->name }}" />
 <meta property="og:description"        content="{{ $product->description }}" />
 <meta property="og:image"              content="{{ get_image($product->image, '600x600') }}" />
 <meta name="description" content="{{ $product->description }}"/>
