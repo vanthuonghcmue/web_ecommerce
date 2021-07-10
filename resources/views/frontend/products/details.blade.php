@@ -25,8 +25,8 @@
                     <ul class="thumb-content">
                         @foreach ($product_variants as $variant)
                         <li class="thumb">
-                            <a href="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" title="thumb product view1" onclick="swap(this);return false;">
-                            <img src="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" alt="thumb product1">
+                            <a href="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" title="$product->name" onclick="swap(this);return false;">
+                            <img src="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" alt=" $product->name">
                         </a>
                         </li>
                         @endforeach
@@ -34,12 +34,6 @@
                 </div>
             </div>
               <!-- End product-img-box -->
-            <div class="share-tags">
-                <div class="share">
-                    <span>Share this:</span>
-                    <a class="facebook" href="#" title="facebook"><i class="zmdi zmdi-facebook"></i></a>
-                </div>
-            </div>
         </div>
         <div class="col-md-6 col-sm-6">
         <div class="product-box-content">
