@@ -104,6 +104,7 @@
             <div id="overview" class="tab-content">
                 <h2>About This Product</h2>
                 <div class="panel-body">
+                    {!! $product->content !!} 
                 </div>
             </div>
             <div id="specification" class="tab-content">
