@@ -45,7 +45,7 @@
                 @if ($errors->first('content'))
                 <p class="text-danger"> {{ $errors->first('content') }} </p>
                 @endif
-                <textarea class="form-control" name="content">{{ old('content') }}</textarea>
+                <textarea class="form-control" id="content" name="content">{{ old('content') }}</textarea>
               </div>
               <div class="form-group @error('image') has-error @enderror">
                 <label>Image</label>
@@ -159,6 +159,13 @@
 <script>
   ClassicEditor
     .create(document.querySelector('#description'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#content'))
     .catch(error => {
       console.error(error);
     });

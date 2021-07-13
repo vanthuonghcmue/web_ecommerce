@@ -1,4 +1,16 @@
 @extends('layouts.frontend')
+@section('meta')
+<meta property="og:url"                content="{{url()->current()}}" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content= "Shopping Cart | Dama" />
+<meta property="og:description"        content="Convenient shopping for millions of items and services. Lots of freeship offers, discount codes. Integrate multiple payment methods" />
+<meta property="og:image"              content="{{ asset('frontend/images/banner-sale.jpg') }}" />
+@endsection
+
+@section('title')
+<title>Shopping Cart | Dama</title>
+@endsection
+
 @section('styles')
 <link rel="stylesheet" href="{{ asset('frontend/css/product_details.css') }}">
 @endsection

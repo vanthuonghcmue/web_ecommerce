@@ -1,4 +1,15 @@
 @extends('layouts.frontend')
+@section('meta')
+<meta property="og:url"                content="{{url()->current()}}" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content= " Dama: {{ $product->name }}" />
+<meta property="og:description"        content="{{ $product->description }}" />
+<meta property="og:image"              content="{{ get_image($product->image, '600x600') }}" />
+<meta name="description" content="{{ $product->description }}"/>
+@endsection
+@section('title')
+<title>{{$product->name}}</title>
+@endsection
 @section('styles')
 <link rel="stylesheet" href="{{ asset('frontend/css/product_details.css') }}">
 @endsection
@@ -14,8 +25,8 @@
                     <ul class="thumb-content">
                         @foreach ($product_variants as $variant)
                         <li class="thumb">
-                            <a href="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" title="thumb product view1" onclick="swap(this);return false;">
-                            <img src="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" alt="thumb product1">
+                            <a href="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" title="$product->name" onclick="swap(this);return false;">
+                            <img src="{{ get_image($variant->image, App\Models\Product::IMAGE_SIZE['large']) }}" alt=" $product->name">
                         </a>
                         </li>
                         @endforeach
@@ -23,12 +34,6 @@
                 </div>
             </div>
               <!-- End product-img-box -->
-            <div class="share-tags">
-                <div class="share">
-                    <span>Share this:</span>
-                    <a class="facebook" href="#" title="facebook"><i class="zmdi zmdi-facebook"></i></a>
-                </div>
-            </div>
         </div>
         <div class="col-md-6 col-sm-6">
         <div class="product-box-content">
@@ -99,6 +104,7 @@
             <div id="overview" class="tab-content">
                 <h2>About This Product</h2>
                 <div class="panel-body">
+                    {!! $product->content !!} 
                 </div>
             </div>
             <div id="specification" class="tab-content">

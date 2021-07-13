@@ -27,7 +27,7 @@ class BannerRequest extends FormRequest
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
             'link' => 'nullable',
             'title' => 'required|string',
-            'alt' => 'required|string|min:2|max:15',
+            'alt' => 'required|string|min:2|max:40',
             'content' => 'nullable|max:300'
         ];
     }
