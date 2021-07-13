@@ -1,6 +1,6 @@
 <div class="product">
     <a class="product-images" href="{{ route('product.details', $product->slug) }}" title="{{ $product->name }}">
-        <img class="primary_image" src="{{ get_image($product->image, App\Models\Product::IMAGE_SIZE['featured']) }}" alt="" />
+        <img class="primary_image" src="{{ get_image($product->image, App\Models\Product::IMAGE_SIZE['featured']) }}" alt="{{ $product->name }}" />
     </a>
     <div class="product-content">
         <a class="category" href="#" title="category">watch</a>

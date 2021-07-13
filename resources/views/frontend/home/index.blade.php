@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+@include('frontend.home.components.meta')
 @include('frontend.home.components.header')
 @section('content')
     @include('frontend.home.components.slide')

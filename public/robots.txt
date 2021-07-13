@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /profile/
+Disallow: /profile/update
+Disallow: /profile/order-history
+Disallow: /checkout
+
+User-agent: adsbot-google
+Crawl-delay: 1

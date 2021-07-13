@@ -1,8 +1,19 @@
 @extends('layouts.frontend')
+@section('meta')
+<meta property="og:url"                content="{{url()->current()}}" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content= "Checkout | Dama" />
+<meta property="og:description"        content="Free shipping on millions of items. Get the best of Shopping and Entertainment with Dama. Enjoy low prices and great deals on the largest selection of everyday essentials and other products technology, electronics,  video games, and more" />
+<meta property="og:image"              content="{{ asset('frontend/images/banner-sale.jpg') }}" />
+@endsection
+
+@section('title')
+<title> Checkout | Dama</title>
+@endsection
+
 @section('styles')
 <link rel="stylesheet" href="{{ asset('frontend/css/checkout.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/bootstrap.min.css')}}" />
-
 @endsection
 
 @section('content')

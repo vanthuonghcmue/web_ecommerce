@@ -83,7 +83,7 @@
             <p class="text-danger"> {{ $errors->first('content') }} </p>
             @endif
             <div class="input-icon right">
-                <input type="text" class="form-control" name="content" placeholder="Content">
+                <textarea type="text" class="form-control" id="description" name="content" placeholder="Content"> </textarea>
             </div>
         </div>
 
@@ -103,4 +103,21 @@
         <button type="submit" class="btn green">Submit</button>
     </div>
 </form>
+@endsection
+@section('script')
+<script src="{{ asset ('ckeditor/ckeditor.js')}}"></script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#description'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#content'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
 @endsection

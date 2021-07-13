@@ -48,7 +48,7 @@
                 @if ($errors->first('product.content'))
                 <p class="text-danger"> {{ $errors->first('product.content') }} </p>
                 @endif
-                <textarea class="form-control" name="product[content]">{{ $product->content }}</textarea>
+                <textarea class="form-control" id = "content" name="product[content]">{{ $product->content }}</textarea>
               </div>
             </div>
           </div>
@@ -231,5 +231,17 @@
     .catch(error => {
       console.error(error);
     });
+</script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#content'))
+    .catch(error => {
+      console.error(error);
+    });
+  editorConfig = {
+    mediaEmbed: {
+        previewsInData: true
+    }
+}
 </script>
 @endsection
