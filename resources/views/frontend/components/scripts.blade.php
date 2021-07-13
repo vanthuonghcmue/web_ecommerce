@@ -40,33 +40,31 @@
 
         @if(Session::has('message'))
         var type = "{{ Session::get('alert-type', 'success') }}";
-        switch (type) {
-            case 'info':
-                toastr.info("{{ Session::get('message') }}");
-                break;
-            case 'warning':
-                toastr.warning("{{ Session::get('message') }}");
-                break;
-            case 'success':
-                toastr.success("{{ Session::get('message') }}");
-                break;
-            case 'error':
-                toastr.error("{{ Session::get('message') }}");
-                break;
-            default:
-                toastr.success("{{ Session::get('message') }}");
-                break;
+        switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        default:
+            toastr.success("{{ Session::get('message') }}");
+            break;
         }
         @endif
     });
-
-    $(document).on("click", ".add_to_cart", function() {
+    $(document).on("click", ".add_to_cart", function () {
         let product_id = $(this).attr("data-id");
         let product_sku_id = $(this).attr("data-sku_id");
         let quantity = 1;
 
-        url = '{{ route('
-        cart.add_to_cart ') }}';
+        url = '{{ route('cart.add_to_cart') }}';
         body = {
             id: product_id,
             product_sku_id: product_sku_id,
