@@ -26,7 +26,14 @@
         ga('send', 'pageview');
     </script>
     <!-- End Google Analytics -->
+    <!-- mailchimp -->
+    <script id="mcjs">
+        ! function(c, h, i, m, p) {
+            m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
+        }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/c9722486df6571baf39cdd76e/70a24a03312d62ff5d8da5a8d.js");
+    </script>
 </head>
+
 <body>
     @include('frontend.components.header')
     @include('frontend.components.content')
@@ -35,4 +42,5 @@
     @include('frontend.components.scripts')
     @include('frontend.components.live_chat')
 </body>
+
 </html>
