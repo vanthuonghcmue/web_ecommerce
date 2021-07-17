@@ -16,7 +16,7 @@ class PayPalController extends Controller
        
         session()->push('id_bill',session('id'));
         $provider = new ExpressCheckout;
-        $invoiceId = uniqid();
+        $invoiceId =  session('id_bill');
         $data = $this->cartData($invoiceId);
         $response = $provider->setExpressCheckout($data);
 
