@@ -52,6 +52,7 @@ Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/paypal', [PayPalController::class,'create'])->name('paypal');
     Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('cancel');
     Route::get('/paypal/success', [PayPalController::class,'success'])->name('success');
-    Route::get('/vnpay', [VnpayController::class,'create'])->name('create');
+    Route::get('/vnpay', [VnpayController::class,'create'])->name('vnpay');
+    Route::get('/return-vnpay', [VnpayController::class,'return'])->name('return-vnpay');
 });
 

@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cart;
+use App\Models\Order;
 
 class VnpayController extends Controller
 {
     public function create(Request $request)
     {
         session()->push('id_bill',session('id'));
-        session(['cost_id' => $request->id]);
-        session(['url_prev' => url()->previous()]);
         $vnp_TmnCode = "AQ4UZ1XK"; 
-        $vnp_HashSecret = "SXFCJOUEQELSWJWVJCVXGOCEIMHZSXSA";
+        $vnp_HashSecret = "SXFCJOUEQELSWJWVJCVXGOCEIMHZSXSA"; 
         $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:8000/return-vnpay";
-        $vnp_TxnRef =  session('id_bill');
-        $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+        $vnp_Returnurl = route('payment.return-vnpay');
+        $vnp_TxnRef = date("YmdHis");
+        $vnp_OrderInfo = "payment bill";
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->input('amount') * 100;
+        $vnp_Amount = Cart::total() * 23000 * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = request()->ip();
 
@@ -56,10 +56,27 @@ class VnpayController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-           // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+            // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
             $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
             $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
         }
         return redirect($vnp_Url);
+    }
+
+    public function return(Request $request)
+    {
+        if ($request->vnp_ResponseCode == "00") {
+            //$this->apSer->thanhtoanonline(session('cost_id'));
+            $id_bill = session('id_bill');
+            $order = Order::find($id_bill);
+            if($order[0]->status == 0 ){
+                $order[0]->update(['status' => 1]);
+            }
+            Cart::destroy();
+            session()->forget('id_bill');
+            return redirect('/')->with('message', 'order successful');
+        }
+        session()->forget('url_prev');
+        return redirect('/')->with('alert-type', 'error')->with('message', 'Create order failed');
     }
 }
