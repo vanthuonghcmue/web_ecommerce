@@ -18,14 +18,12 @@ class OrderController extends Controller
         if (Cart::count() < 1) {
             return back()->with('alert-type', 'error')->with('message', 'Cart is empty!');
         }
-
         $cart_items = Cart::content();
         return(view('frontend.checkout.index',compact('cart_items')));
     }
 
     public function checkout(OrderRequest $request)
     {
-
         $order_params = $request->only(['address', 'fullname', 'phone', 'email','total', 'note']);
         $order_params['status'] = self::DEFAULT_STATUS;
         $order_items = array();
@@ -46,9 +44,15 @@ class OrderController extends Controller
             $order = Auth::user()->orders()->save(new Order($order_params));
             $order->order_items()->saveMany($order_items);
             DB::commit();
-
-            Cart::destroy();
-            return redirect('/')->with('message', 'Create order successful');
+            if($request->payment == "1"){
+                Cart::destroy();
+                return redirect('/')->with('message', 'Create order successful');
+            }
+            else
+            if($request->payment == "2"){
+                return redirect( route('payment.paypal'))->with('id',$order->id);
+            }
+            
         } catch(\Exception $e) {
             DB::rollback();
             return back()->with('alert-type', 'error')->with('message', 'Create order failed');

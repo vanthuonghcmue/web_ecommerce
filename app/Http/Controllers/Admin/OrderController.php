@@ -43,6 +43,5 @@ class OrderController extends Controller
             $order->update(['status' => 0]);
         }
         return back()->with('message', 'update status successful');
-        echo ('hhh');
     }
 }
