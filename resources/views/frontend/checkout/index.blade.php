@@ -125,13 +125,14 @@
                                     <li>
                                         <input type="radio" class="btn-check" name="payment" autocomplete="off" value="2">
                                         <h3>Paypal</h3>
-                                        <img src='https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png' alt='Chấp nhận PayPal | Lớn v2' />
+                                        <img src='https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png' alt='payment PayPal' />
                                     </li>
 
                                     <li>
                                         <input type="radio" class="btn-check" name="payment" autocomplete="off" value="3">
-
                                         <h3>VNPay</h3>
+                                        <img src="{{asset('frontend/images/logoVnpay.png')}}" alt='payment vnpay' />
+                                        
                                     </li>
                                 </ul>
                             </div>

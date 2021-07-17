@@ -52,6 +52,9 @@ class OrderController extends Controller
             if($request->payment == "2"){
                 return redirect( route('payment.paypal'))->with('id',$order->id);
             }
+            else{
+                return redirect( route('payment.vnpay'))->with('id',$order->id);
+            }
             
         } catch(\Exception $e) {
             DB::rollback();
