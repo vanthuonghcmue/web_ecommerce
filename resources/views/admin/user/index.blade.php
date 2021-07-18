@@ -26,7 +26,8 @@
       </button>
       <ul class="dropdown-menu pull-right" role="menu">
         <li>
-          <a href="#">Action</a>
+          <a href="{{route('admin.export-user')}}"><span data-href="route('export-tasks')" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span></a>
+          
         </li>
       </ul>
     </div>
