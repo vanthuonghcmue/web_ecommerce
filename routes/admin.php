@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\ExportController;
 use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('admin.login');
@@ -63,4 +64,6 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
         Route::delete('/delete/{id}', [BannerController::class, 'destroy'])->name('destroy');
 
     });
+
+    Route::get('/export-user', [ExportController::class, 'exportCsv'])->name('export-user');
 });

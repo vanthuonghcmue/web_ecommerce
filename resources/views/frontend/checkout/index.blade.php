@@ -132,7 +132,6 @@
                                         <input type="radio" class="btn-check" name="payment" autocomplete="off" value="3">
                                         <h3>VNPay</h3>
                                         <img src="{{asset('frontend/images/logoVnpay.png')}}" alt='payment vnpay' />
-                                        
                                     </li>
                                 </ul>
                             </div>
