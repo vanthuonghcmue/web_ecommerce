@@ -1,14 +1,22 @@
 @extends('layouts.frontend')
-@section('meta')
-<meta property="og:url"                content="{{url()->current()}}" />
-<meta property="og:type"               content="website" />
-<meta property="og:title"              content= " Dama: {{ $product->name }}" />
-<meta property="og:description"        content="{{ $product->description }}" />
-<meta property="og:image"              content="{{ get_image($product->image, '600x600') }}" />
-<meta name="description" content="{{ $product->description }}"/>
-@endsection
 @section('title')
 <title>{{$product->name}}</title>
+@endsection
+@section('meta')
+<meta name="description" content="{{ $product->description }}"/>
+<meta name="keywords" content="{{$product->name}}">
+<meta property="og:url" content="{{url()->current()}}">
+<meta property="og:title" content="Dama: {{ $product->name }}">
+<meta property="og:description" content="{{ $product->description }}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="{{ get_image($product->image, '600x600') }}">
+<meta property="og:site_name" content="dama">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@dama">
+<meta name="twitter:title" content="Dama: {{ $product->name }}">
+<meta name="twitter:description" content="{{ $product->description }}">
+<meta name="twitter:image" content="{{ get_image($product->image, '600x600') }}">
 @endsection
 @section('styles')
 <link rel="stylesheet" href="{{ asset('frontend/css/product_details.css') }}">
