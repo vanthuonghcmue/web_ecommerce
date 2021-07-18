@@ -13,7 +13,6 @@ class PayPalController extends Controller
 
     public function create()
     {
-       
         session()->push('id_bill',session('id'));
         $provider = new ExpressCheckout;
         $invoiceId = uniqid();
